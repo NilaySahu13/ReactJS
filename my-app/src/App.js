@@ -4,6 +4,12 @@ import Alert from './components/Alert';
 import Navbar from './components/Navbar';
 import TextForm from './components/TextFrom';
 import React,{useState} from 'react';
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Link
+} from 'react-router-dom';
 
 function App() {
   const [mode, setMode] = useState('light');// whether dark mode is enable or not
@@ -39,15 +45,25 @@ function App() {
   }
   return (
     <>
+    <Router>
       <div className='container'>
       <br />
-      <Navbar title="HOME" feat="FEATURES" mode={mode} toggleMode={toggleMode} />
+      <Navbar title="Form" feat="About" mode={mode} toggleMode={toggleMode} />
       <Alert alert={mssg}/>
       {/* <Navbar title="GHAR"/> */}
       {/* <Navbar/> */}
-      <TextForm title="Hamar Form!" showMssg={showMssg} mode={mode} /> 
-      <About mode={mode}/>
+      <Routes>
+        <Route exact path='/about' element={<About mode={mode}/>} /> 
+        {/* exact cause of partical checking of react */}
+        <Route exact path='/form' element={<TextForm title="Hamar Form!" showMssg={showMssg} mode={mode} />} />
+          {/* <About mode={mode}/> */}
+        {/* </Route> */}
+        {/* <Route exact path='/form'>
+          <TextForm title="Hamar Form!" showMssg={showMssg} mode={mode} />        
+        </Route> */}
+      </Routes>
       </div>
+      </Router>
     </>
   );
 }
