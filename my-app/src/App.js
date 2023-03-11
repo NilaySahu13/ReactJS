@@ -8,7 +8,6 @@ import {
   BrowserRouter as Router,
   Routes,
   Route,
-  Link
 } from 'react-router-dom';
 
 function App() {
@@ -55,7 +54,7 @@ function App() {
       <Routes>
         <Route exact path='/about' element={<About mode={mode}/>} /> 
         {/* exact cause of partical checking of react */}
-        <Route exact path='/form' element={<TextForm title="Hamar Form!" showMssg={showMssg} mode={mode} />} />
+        <Route exact path='/form' element={<TextForm title="TextUtils " subtitle = "Word Counter, Character Counter, Remove Extra Spaces" showMssg={showMssg} mode={mode} />} />
           {/* <About mode={mode}/> */}
         {/* </Route> */}
         {/* <Route exact path='/form'>
